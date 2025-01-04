@@ -1,7 +1,8 @@
-let $authUrlBox = document.getElementById("authurl");
-
+let $authUrlBox = document.getElementById("link");
+let $jsonDownloadButton = document.getElementById("postPurchaseButton");
+var globalData = "";
 document
-  .getElementById("dataForm")
+  .getElementById("scrapeForm")
   .addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -15,18 +16,9 @@ document
       },
     });
 
-    data = await data.json();
-
-    const jsonString = JSON.stringify(data, null, 2);
-    const blob = new Blob([jsonString], { type: "application/json" });
-    const link = document.createElement("a");
-
-    // Use IGN for the file name, fallback to "data" if IGN is not available
-    const fileName = `${data.ign}-data.json`;
-
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    link.click();
+    globalData = await data.json();
+    document.getElementById("content").value = JSON.stringify(globalData, null, 2)
+    $jsonDownloadButton.disabled = false
   });
 
 function pasteText(elementId) {
@@ -39,3 +31,15 @@ function pasteText(elementId) {
       alert("Failed to paste. Please allow clipboard permissions.");
     });
 }
+
+$jsonDownloadButton.addEventListener("click", function () {
+  const blob = new Blob([JSON.stringify(globalData, null, 2)], {
+    type: "application/json",
+  });
+
+  const link = document.createElement("a");
+  const fileName = `${globalData.ign}-data.json`;
+  link.href = URL.createObjectURL(blob);
+  link.download = fileName;
+  link.click();
+});
