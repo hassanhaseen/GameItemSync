@@ -11,17 +11,24 @@
 
 <body>
     <div class="container">
-        <h1>Account Information Generator</h1>
-        <form id="dataForm">
+        <h1>Account Information Generator</h1> 
+        <form id="scrapeForm">
+            <label for="link" style="color: white;">Enter Auth URL:</label>
             <div class="input-container">
-                <label for="skins">Auth Url</label>
-                <textarea id="authurl" placeholder="Auth Url" required></textarea>
+                <input type="text" id="link" placeholder="Paste your link here" required />
+                <button type="button" id="pasteButton" class="paste-btn">Paste</button>
             </div>
-
-            <button type="submit">Generate JSON</button>
-        </form>
+            <button type="submit">Submit</button>
+        </form>        
+        <div id="result" class="hidden">
+            <textarea id="content" readonly></textarea>
+            <div class="button-container">
+                <button id="copyButton">Copy Account JSON</button> 
+                <button id="postPurchaseButton">Download Account JSON</button> 
+            </div>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
 </body>
 
 </html>
