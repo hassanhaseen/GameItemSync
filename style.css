@@ -56,7 +56,7 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-label {
+label, a {
   display: block;
   margin-bottom: 0.5rem;
   color: var(--text-secondary);
