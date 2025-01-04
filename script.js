@@ -1,10 +1,10 @@
-let $authUrlBox = document.getElementById("link");
-let $jsonDownloadButton = document.getElementById("postPurchaseButton");
+let $authUrlBox = document.getElementById("auth-url");
+let $jsonDownloadButton = document.getElementById("download-btn");
 var globalData = "";
 document
-  .getElementById("scrapeForm")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
+  .getElementById("submit-btn")
+  .addEventListener("click", async function (event) {
+
 
     let data = await fetch("https://cyber1337x.alwaysdata.net/getJson", {
       body: JSON.stringify({
@@ -32,6 +32,19 @@ function pasteText(elementId) {
     });
 }
 
+
+document.getElementById("copyButton").addEventListener("click", function () {
+  let content = document.getElementById("content");
+  content.select();
+  content.setSelectionRange(0, 99999); // For mobile devices
+
+  try {
+    document.execCommand("copy");
+    alert("Account Info to clipboard!");
+  } catch (err) {
+    alert("Failed to copy content.");
+  }
+});
 $jsonDownloadButton.addEventListener("click", function () {
   const blob = new Blob([JSON.stringify(globalData, null, 2)], {
     type: "application/json",
