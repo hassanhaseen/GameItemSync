@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Information Generator</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
+
 <body>
     <div class="container">
         <h1>Account Information Generator</h1>
-        
+
         <div>
-            <a href="https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1&scope=account%20openid" target="_blank">
-                <label for="auth-url" style="cursor: pointer;">Enter Auth URL</label>
-            </a>
+            <label for="auth-url" style="cursor: pointer;">
+                <a href="https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1&scope=account%20openid"
+                    target="_blank">Enter Auth URL</a>
+            </label>
             <div class="input-group">
-                <input 
-                    type="text" 
-                    id="auth-url" 
-                    placeholder="Paste your authentication URL here"
-                    
-                >
-                <button onclick="pasteText('auth-url')" class="paste-btn">
-                    Paste
-                </button>
+                <input type="text" id="auth-url" placeholder="Paste your authentication URL here">
+                <button onclick="pasteText('auth-url')" class="paste-btn">Paste</button>
             </div>
         </div>
 
         <button class="submit-btn" id="submit-btn">Generate Account Information</button>
 
-        <textarea 
-            id="content" 
-            readonly 
-            aria-label="Generated account information"
-            placeholder="Generated account information will appear here..."
-        ></textarea>
+        <textarea id="content" readonly aria-label="Generated account information"
+            placeholder="Generated account information will appear here..."></textarea>
 
         <div class="button-group">
             <button class="copy-btn" id="copyButton">Copy Account JSON</button>
@@ -43,6 +34,7 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script src="script.js"></script>
