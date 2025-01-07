@@ -9,27 +9,32 @@ document
     $submitButton.disabled = true
     $btnLoader.classList.remove("hiddenButton")
 
-    let data = await fetch("https://cyber1337x.alwaysdata.net/getJson", {
-      body: JSON.stringify({
-        link: $authUrlBox.value,
-      }),
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (data.status != 200) {
-      let text = await data.json();
-      alert("ERROR: " + JSON.stringify(text))
-      return;
+    try {
+      let data = await fetch("https://cyber1337x.alwaysdata.net/getJson", {
+        body: JSON.stringify({
+          link: $authUrlBox.value,
+        }),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      
+      if (data.status != 200) {
+        let text = await data.json();
+        alert("ERROR: " + JSON.stringify(text))
+        return;
+      }
+      $btnLoader.classList.add("hiddenButton")
+      globalData = await data.json();
+      alert(`${globalData[0].ign} Information Fetched`)
+      document.getElementById("content").value = JSON.stringify(globalData, null, 2)
+      $jsonDownloadButton.disabled = false
+      $submitButton.disabled = false
+    } catch {
+      alert("ERROR: Invalid Token!")
+      $submitButton.disabled = false
     }
-    $btnLoader.classList.add("hiddenButton")
-    globalData = await data.json();
-    alert(`${globalData[0].ign} Information Fetched`)
-    document.getElementById("content").value = JSON.stringify(globalData, null, 2)
-    $jsonDownloadButton.disabled = false
-    $submitButton.disabled = false
   });
 
 function pasteText(elementId) {
