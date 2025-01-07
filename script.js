@@ -1,5 +1,6 @@
 let $authUrlBox = document.getElementById("auth-url");
 let $jsonDownloadButton = document.getElementById("download-btn");
+let $copyButton = document.getElementById("copyButton");
 let $btnLoader = document.getElementById("buttonLoader");
 let $submitButton = document.getElementById("submit-btn")
 var globalData = "";
@@ -30,6 +31,7 @@ document
       alert(`${globalData[0].ign} Information Fetched`)
       document.getElementById("content").value = JSON.stringify(globalData, null, 2)
       $jsonDownloadButton.disabled = false
+      $copyButton.dispatchEvent = false
       $submitButton.disabled = false
     } catch {
       alert("ERROR: Invalid Token!")
