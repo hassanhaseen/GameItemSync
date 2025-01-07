@@ -1,10 +1,13 @@
 let $authUrlBox = document.getElementById("auth-url");
 let $jsonDownloadButton = document.getElementById("download-btn");
+let $btnLoader = document.getElementById("buttonLoader");
+let $submitButton = document.getElementById("submit-btn")
 var globalData = "";
 document
   .getElementById("submit-btn")
   .addEventListener("click", async function (event) {
-
+    $submitButton.disabled = true
+    $btnLoader.classList.remove("hiddenButton")
 
     let data = await fetch("https://cyber1337x.alwaysdata.net/getJson", {
       body: JSON.stringify({
@@ -16,9 +19,17 @@ document
       },
     });
 
+    if (data.status != 200) {
+      let text = await data.json();
+      alert("ERROR: " + JSON.stringify(text))
+      return;
+    }
+    $btnLoader.classList.add("hiddenButton")
     globalData = await data.json();
+    alert(`${globalData[0].ign} Information Fetched`)
     document.getElementById("content").value = JSON.stringify(globalData, null, 2)
     $jsonDownloadButton.disabled = false
+    $submitButton.disabled = false
   });
 
 function pasteText(elementId) {
@@ -51,7 +62,7 @@ $jsonDownloadButton.addEventListener("click", function () {
   });
 
   const link = document.createElement("a");
-  const fileName = `${globalData.ign}-data.json`;
+  const fileName = `${globalData[0].ign}-data.json`;
   link.href = URL.createObjectURL(blob);
   link.download = fileName;
   link.click();

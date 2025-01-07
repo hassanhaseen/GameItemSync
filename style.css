@@ -197,3 +197,7 @@ textarea:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
+
+.hiddenButton {
+  visibility: hidden;
+}
