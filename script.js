@@ -31,7 +31,7 @@ document
       alert(`${globalData[0].ign} Information Fetched`)
       document.getElementById("content").value = JSON.stringify(globalData, null, 2)
       $jsonDownloadButton.disabled = false
-      $copyButton.dispatchEvent = false
+      $copyButton.disabled = false
       $submitButton.disabled = false
     } catch {
       alert("ERROR: Invalid Token!")
