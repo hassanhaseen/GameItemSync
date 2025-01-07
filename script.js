@@ -34,6 +34,7 @@ document
     } catch {
       alert("ERROR: Invalid Token!")
       $submitButton.disabled = false
+      $btnLoader.classList.add("hiddenButton")
     }
   });
 
