@@ -20,9 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     $mainContainer.style.visibility = "visible";
   } catch (err) {
     console.log(err);
-    setTimeout(() => {
-      window.location.href = "/login.html";
-    }, 2000);
+    window.location.href = window.location.origin + "/GameItemSync/login.html";
   }
 });
 
