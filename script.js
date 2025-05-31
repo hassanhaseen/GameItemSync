@@ -13,7 +13,9 @@ var skinsInfo = {};
 document.addEventListener("DOMContentLoaded", async () => {
   $mainContainer.style.visibility = "hidden";
   try {
-    await axios.get("http://127.0.0.1:8001/session", { withCredentials: true });
+    await axios.get("https://cyber1337x.alwaysdata.net/session", {
+      withCredentials: true,
+    });
     $loader.remove();
     $mainContainer.style.visibility = "visible";
   } catch (err) {
