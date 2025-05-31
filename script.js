@@ -4,10 +4,25 @@ let $copyButton = document.getElementById("copyButton");
 let $btnLoader = document.getElementById("buttonLoader");
 let $submitButton = document.getElementById("submit-btn");
 let $skinInfoCopybutton = document.getElementById("skinInfoButton");
+let $mainContainer = document.getElementById("main_container");
+let $loader = document.getElementById("loader");
 var globalData = {};
 var gbInfo = {};
 var skinsInfo = {};
 
+document.addEventListener("DOMContentLoaded", async () => {
+  $mainContainer.style.visibility = "hidden";
+  try {
+    await axios.get("http://127.0.0.1:8001/session", { withCredentials: true });
+    $loader.remove();
+    $mainContainer.style.visibility = "visible";
+  } catch (err) {
+    console.log(err);
+    setTimeout(() => {
+      window.location.href = "/login.html";
+    }, 2000);
+  }
+});
 
 document
   .getElementById("submit-btn")
@@ -25,18 +40,18 @@ document
           "Content-Type": "application/json",
         },
       });
-      console.log(data.status)
-      console.log(data.statusText)
+      console.log(data.status);
+      console.log(data.statusText);
       if (data.status != 200) {
-        console.log(data.status + "->" + data.statusText)
+        console.log(data.status + "->" + data.statusText);
         let text = await data.json();
         alert("ERROR: " + JSON.stringify(text));
         return;
       }
       $btnLoader.classList.add("hiddenButton");
       globalData = await data.json();
-      gbInfo = globalData["format"]
-      skinsInfo = globalData["info"]
+      gbInfo = globalData["format"];
+      skinsInfo = globalData["info"];
       alert(`${gbInfo[0].ign} Information Fetched`);
       document.getElementById("content").value = JSON.stringify(
         globalData,

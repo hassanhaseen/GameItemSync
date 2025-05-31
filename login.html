@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form id="login-form">
+        <label for="email">Username</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="email"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="submit-btn" id="login-btn">
+          <i class="fa fa-spinner fa-spin hiddenButton" id="buttonLoader"></i>
+          Login
+        </button>
+      </form>
+      <div id="result" style="margin-top: 1rem; text-align: center"></div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>

@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--background);
   color: var(--text);
   display: flex;
@@ -56,7 +56,8 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-label, a {
+label,
+a {
   display: block;
   margin-bottom: 0.5rem;
   color: var(--text-secondary);
@@ -64,7 +65,8 @@ label, a {
   font-weight: 500;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   flex: 1;
   padding: 0.75rem 1rem;
   background-color: var(--input-bg);
@@ -75,7 +77,8 @@ input[type="text"] {
   transition: var(--transition);
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
@@ -141,7 +144,7 @@ textarea {
   border-radius: var(--border-radius);
   margin-bottom: 1.5rem;
   resize: vertical;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-size: 0.875rem;
   line-height: 1.7;
 }
@@ -158,24 +161,27 @@ textarea:focus {
   justify-content: center;
 }
 
-.copy-btn, .download-btn {
+.copy-btn,
+.download-btn {
   background-color: var(--input-bg);
   color: var(--text);
   border: 1px solid rgba(255, 255, 255, 0.1);
   min-width: 180px;
 }
 
-.copy-btn:hover, .download-btn:hover {
+.copy-btn:hover,
+.download-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 480px) {
   .button-group {
-      flex-direction: column;
+    flex-direction: column;
   }
-  
-  .copy-btn, .download-btn {
-      width: 100%;
+
+  .copy-btn,
+  .download-btn {
+    width: 100%;
   }
 }
 
@@ -200,4 +206,22 @@ textarea:focus {
 
 .hiddenButton {
   visibility: hidden;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

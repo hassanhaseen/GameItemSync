@@ -1,51 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Account Information Generator</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="favicon.png" type="image/png" />
-</head>
+  </head>
 
-<body>
-    <div class="container">
-        <h1>Account Information Generator</h1>
+  <body>
+    <div class="loader" id="loader"></div>
 
-        <div>
-            <label for="auth-url" style="cursor: pointer">
-                <a href="https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1&scope=account%20openid"
-                    target="_blank">Enter Auth URL</a>
-            </label>
-            <div class="input-group">
-                <input type="text" id="auth-url" placeholder="Paste your authentication URL here" />
-                <button onclick="pasteText('auth-url')" class="paste-btn">
-                    Paste
-                </button>
-            </div>
+    <div id="main_container" class="container">
+      <h1>Account Information Generator</h1>
+
+      <div>
+        <label for="auth-url" style="cursor: pointer">
+          <a
+            href="https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1&scope=account%20openid"
+            target="_blank"
+            >Enter Auth URL</a
+          >
+        </label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="auth-url"
+            placeholder="Paste your authentication URL here"
+          />
+          <button onclick="pasteText('auth-url')" class="paste-btn">
+            Paste
+          </button>
         </div>
+      </div>
 
-        <button class="submit-btn" id="submit-btn">
-            <i class="fa fa-spinner fa-spin hiddenButton" id="buttonLoader"></i>
-            Generate Account Information
+      <button class="submit-btn" id="submit-btn">
+        <i class="fa fa-spinner fa-spin hiddenButton" id="buttonLoader"></i>
+        Generate Account Information
+      </button>
+
+      <textarea
+        id="content"
+        readonly
+        aria-label="Generated account information"
+        placeholder="Generated account information will appear here..."
+      ></textarea>
+
+      <div class="button-group">
+        <button class="copy-btn" id="skinInfoButton" disabled>
+          Copy Skins Info
         </button>
-
-        <textarea id="content" readonly aria-label="Generated account information"
-            placeholder="Generated account information will appear here..."></textarea>
-
-        <div class="button-group">
-            <button class="copy-btn" id="skinInfoButton" disabled>Copy Skins Info</button>
-            <button class="copy-btn" id="copyButton" disabled>Copy Account JSON</button>
-            <button class="download-btn" id="download-btn" disabled>
-                Download Account JSON
-            </button>
-        </div>
+        <button class="copy-btn" id="copyButton" disabled>
+          Copy Account JSON
+        </button>
+        <button class="download-btn" id="download-btn" disabled>
+          Download Account JSON
+        </button>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
 
 <script src="script.js"></script>
