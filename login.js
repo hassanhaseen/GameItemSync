@@ -21,7 +21,7 @@ form.addEventListener("submit", async (e) => {
     );
     resultDiv.textContent = "Login successful!";
 
-    window.location.href = window.location.origin + "/GameItemSync/index.html";
+    window.location.href = "/index.html";
   } catch (error) {
     resultDiv.textContent = "Login failed. Please check your credentials.";
     resultDiv.style.color = "tomato";
