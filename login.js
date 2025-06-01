@@ -21,7 +21,9 @@ form.addEventListener("submit", async (e) => {
     );
     resultDiv.textContent = "Login successful!";
 
-    window.location.href = "/index.html";
+    setTimeout(() => {
+      window.location.href = "/index.html";
+    }, 5000);
   } catch (error) {
     resultDiv.textContent = "Login failed. Please check your credentials.";
     resultDiv.style.color = "tomato";
